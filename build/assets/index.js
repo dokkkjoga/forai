@@ -114,6 +114,12 @@ function d(quantidade) {
         elementoPai.style.right = `${randomRight}%`;
         
         elementoFilho.style.scale = `${randomScale}%`;
+        console.log(`Escala do elemento filho: ${randomScale}%`);
+        console.log(`Duração do elemento filho: ${durationFilho}s`);
+        console.log(`Duração do elemento pai: ${durationPai}s`);
+        console.log(`Bottom do elemento pai: ${randomBottom}%`);
+        console.log(`Right do elemento pai: ${randomRight}%`);
+        
 
         // requestAnimationFrame ajuda o celular a processar as velocidades dinâmicas a tempo
         requestAnimationFrame(() => {
