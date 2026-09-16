@@ -102,25 +102,26 @@ function d(quantidade) {
         elementoPai.classList.add(`behind`, `come-in`);
         elementoFilho.classList.add(`heart`);
         
-        // Uso explícito de 'let' em cada variável para isolar o escopo no mobile
         let randomBottom = Math.floor(Math.random() * 16) + 35;
-        let randomRight = Math.floor(Math.random() * 301) + -150; // Mudado para evitar conflito com 'i' das legendas
+        
+        // MUDANÇA AQUI: Sorteia uma posição horizontal de -20% a 120% da largura da tela
+        // Isso distribui os corações igualmente na esquerda, centro e direita.
+        let randomLeft = Math.floor(Math.random() * 141) - 20; 
+        
         let randomScale = Math.floor(Math.random() * 76) + 25;
         let durationFilho = Math.floor(Math.random() * 8) + 8;
         let durationPai = Math.floor(Math.random() * 76) + 25;
         
-        // Aplicação dos estilos com unidades explícitas
+        // Aplicando via 'left' para garantir simetria perfeita no mobile
         elementoPai.style.bottom = `${randomBottom}%`;
-        elementoPai.style.right = `${randomRight}%`;
+        elementoPai.style.left = `${randomLeft}%`; 
         
         elementoFilho.style.scale = `${randomScale}%`;
 
-
-        // requestAnimationFrame ajuda o celular a processar as velocidades dinâmicas a tempo
         requestAnimationFrame(() => {
             elementoPai.style.animationDuration = `${durationPai}s`;
             elementoFilho.style.animationDuration = `${durationFilho}s`;
-            elementoPai.style.webkitAnimationDuration = `${durationPai}s`; // Compatibilidade extra com Safari (iOS)
+            elementoPai.style.webkitAnimationDuration = `${durationPai}s`;
             elementoFilho.style.webkitAnimationDuration = `${durationFilho}s`;
         });
         
@@ -128,6 +129,7 @@ function d(quantidade) {
         container.appendChild(elementoPai);
     }
 }
+
 
 e.addEventListener(`mouseenter`, t => {
     e.classList.add(`bright`)
